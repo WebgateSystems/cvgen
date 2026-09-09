@@ -1,0 +1,25 @@
+name: default
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 28
+  headline: 12
+  section: 11
+  body: 10.5
+  small: 10
+  contact: 10
+colors:
+  text: "#111111"
+  muted: "#444444"
+  accent: "#2c3e50"
+  rule: "#cccccc"
+  pill_bg: "#e8eef4"
+  pill_text: "#2c3e50"
+spacing:
+  page_margin_mm: 12
+  column_gutter_mm: 7
+  left_column_ratio: 0.32
+  section_gap_pt: 11
+  item_gap_pt: 5

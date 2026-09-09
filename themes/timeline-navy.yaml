@@ -1,0 +1,27 @@
+name: timeline-navy
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 28
+  headline: 12
+  section: 11
+  body: 10
+  small: 9.5
+  contact: 9
+colors:
+  text: "#1a365d"
+  muted: "#4a6fa5"
+  accent: "#1a365d"
+  rule: "#d0d7e2"
+  timeline: "#2b4c7e"
+  pill_bg: "#e8eef6"
+  pill_text: "#1a365d"
+  page_bg: "#ffffff"
+spacing:
+  page_margin_mm: 14
+  column_gutter_mm: 8
+  left_column_ratio: 0.22
+  section_gap_pt: 12
+  item_gap_pt: 8

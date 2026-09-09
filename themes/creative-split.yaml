@@ -1,0 +1,35 @@
+name: creative-split
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 22
+  headline: 11
+  section: 11
+  body: 10
+  small: 9.5
+  contact: 9
+colors:
+  text: "#1f2937"
+  muted: "#64748b"
+  accent: "#1f2937"
+  rule: "#d1d5db"
+  timeline: "#94a3b8"
+  sidebar_bg: "#3d4f46"
+  sidebar_text: "#ffffff"
+  sidebar_muted: "#a8b5ad"
+  bar_track: "#2a3630"
+  bar_fill: "#ffffff"
+  banner_bg: "#4b5563"
+  banner_text: "#e5e7eb"
+  page_bg: "#ffffff"
+  pill_bg: "#e5e7eb"
+  pill_text: "#1f2937"
+spacing:
+  page_margin_mm: 12
+  column_gutter_mm: 10
+  left_column_ratio: 0.34
+  section_gap_pt: 12
+  item_gap_pt: 8
+  sidebar_width_mm: 70

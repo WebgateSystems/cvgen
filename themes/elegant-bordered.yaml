@@ -1,0 +1,29 @@
+name: elegant-bordered
+scale: 1.0
+fonts:
+  heading: "Libertinus Serif"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 30
+  headline: 13
+  section: 11
+  body: 10
+  small: 9.5
+  contact: 9
+colors:
+  text: "#1a1a2e"
+  muted: "#5c5c6e"
+  accent: "#b08968"
+  gold: "#b08968"
+  rule: "#d6d0c4"
+  timeline: "#d6d0c4"
+  page_bg: "#faf8f4"
+  border: "#b08968"
+  pill_bg: "#f0ebe3"
+  pill_text: "#1a1a2e"
+spacing:
+  page_margin_mm: 16
+  column_gutter_mm: 14
+  left_column_ratio: 0.36
+  section_gap_pt: 12
+  item_gap_pt: 8

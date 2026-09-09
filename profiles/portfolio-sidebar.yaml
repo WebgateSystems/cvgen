@@ -1,0 +1,6 @@
+name: portfolio-sidebar
+layout: portfolio-sidebar
+theme: portfolio-sidebar
+max_pages: 1
+include: {}
+exclude: []

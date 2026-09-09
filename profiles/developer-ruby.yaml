@@ -1,0 +1,17 @@
+name: developer-ruby
+layout: two-column
+theme: default
+max_pages: 1
+include:
+  skills:
+    - ruby
+    - rails
+    - rspec
+    - postgres
+    - mysql
+    - redis
+    - git
+    - scrum
+    - aws
+exclude: []
+max_experience_items: 8

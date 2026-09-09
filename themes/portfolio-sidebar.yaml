@@ -1,0 +1,36 @@
+name: portfolio-sidebar
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 22
+  headline: 10.5
+  section: 9.5
+  body: 9
+  small: 8.2
+  contact: 8
+colors:
+  text: "#0f172a"
+  muted: "#64748b"
+  accent: "#1e40af"
+  rule: "#e2e8f0"
+  timeline: "#93c5fd"
+  page_bg: "#ffffff"
+  pill_bg: "#dbeafe"
+  pill_text: "#1e3a8a"
+  sidebar_bg: "#f8fafc"
+  quote_bg: "#dbeafe"
+  banner_bg: "#1e3a8a"
+  banner_text: "#e0e7ff"
+  bar_track: "#e2e8f0"
+  bar_fill: "#2563eb"
+spacing:
+  page_margin_mm: 10
+  column_gutter_mm: 8
+  left_column_ratio: 0.64
+  section_gap_pt: 7
+  item_gap_pt: 4
+  sidebar_width_mm: 62
+  banner_width_mm: 85
+  banner_height_mm: 50

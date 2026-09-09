@@ -1,0 +1,6 @@
+name: creative-split
+layout: creative-split
+theme: creative-split
+max_pages: 2
+include: {}
+exclude: []

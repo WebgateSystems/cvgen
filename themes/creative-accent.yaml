@@ -1,0 +1,30 @@
+name: creative-accent
+scale: 1.0
+fonts:
+  heading: "Libertinus Serif"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 30
+  headline: 12
+  section: 11
+  body: 10
+  small: 9.5
+  contact: 9
+colors:
+  text: "#2d2a26"
+  muted: "#6b6560"
+  accent: "#a65e4e"
+  rule: "#d9d2c8"
+  timeline: "#c4b8a8"
+  pill_bg: "#efeae3"
+  pill_text: "#2d2a26"
+  page_bg: "#f7f3ee"
+  blob_1: "#e8c4b8"
+  blob_2: "#c5c9a8"
+  blob_3: "#d4b896"
+spacing:
+  page_margin_mm: 16
+  column_gutter_mm: 10
+  left_column_ratio: 0.38
+  section_gap_pt: 14
+  item_gap_pt: 8

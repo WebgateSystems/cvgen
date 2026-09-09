@@ -1,0 +1,6 @@
+name: default
+layout: modern-stack
+theme: modern-blue
+max_pages: 2
+include: {}
+exclude: []

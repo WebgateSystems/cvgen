@@ -1,0 +1,8 @@
+/.bundle/
+/vendor/bundle/
+/build/
+/content/
+.DS_Store
+*.swp
+/.tmp_cv_preview/
+.idea/

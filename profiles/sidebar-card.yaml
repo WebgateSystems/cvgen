@@ -1,0 +1,6 @@
+name: sidebar-card
+layout: sidebar-card
+theme: sidebar-card
+max_pages: 2
+include: {}
+exclude: []

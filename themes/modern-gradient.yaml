@@ -1,0 +1,30 @@
+name: modern-gradient
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 26
+  headline: 12
+  section: 11
+  body: 10
+  small: 9.5
+  contact: 9
+colors:
+  text: "#1e293b"
+  muted: "#64748b"
+  accent: "#2563eb"
+  secondary: "#7c3aed"
+  rule: "#e2e8f0"
+  timeline: "#93c5fd"
+  page_bg: "#ffffff"
+  pill_bg: "#dbeafe"
+  pill_text: "#1e3a8a"
+  blob_1: "#c4b5fd"
+  blob_2: "#93c5fd"
+spacing:
+  page_margin_mm: 13
+  column_gutter_mm: 10
+  left_column_ratio: 0.38
+  section_gap_pt: 11
+  item_gap_pt: 6

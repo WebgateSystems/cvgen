@@ -1,0 +1,6 @@
+name: timeline
+layout: timeline
+theme: timeline-navy
+max_pages: 2
+include: {}
+exclude: []

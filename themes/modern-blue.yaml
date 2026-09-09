@@ -1,0 +1,25 @@
+name: modern-blue
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 26
+  headline: 11
+  section: 11
+  body: 9.5
+  small: 8.5
+  contact: 8.5
+colors:
+  text: "#1f2933"
+  muted: "#52606d"
+  accent: "#1e3a5f"
+  rule: "#d9e2ec"
+  pill_bg: "#e8f1fb"
+  pill_text: "#1e3a5f"
+spacing:
+  page_margin_mm: 14
+  column_gutter_mm: 8
+  left_column_ratio: 0.42
+  section_gap_pt: 10
+  item_gap_pt: 5

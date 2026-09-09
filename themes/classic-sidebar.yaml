@@ -1,0 +1,27 @@
+name: classic-sidebar
+scale: 1.0
+fonts:
+  heading: "Helvetica Neue"
+  body: "Helvetica Neue"
+sizes_pt:
+  name: 32
+  headline: 12.5
+  section: 11.5
+  body: 10.5
+  small: 10
+  contact: 10
+colors:
+  text: "#111111"
+  muted: "#555555"
+  accent: "#111111"
+  rule: "#bbbbbb"
+  sidebar_bg: "#e4e4e4"
+  pill_bg: "#dddddd"
+  pill_text: "#111111"
+spacing:
+  page_margin_mm: 11
+  column_gutter_mm: 6
+  left_column_ratio: 0.30
+  section_gap_pt: 12
+  item_gap_pt: 5.5
+  sidebar_width_mm: 64

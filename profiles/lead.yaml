@@ -1,0 +1,6 @@
+name: lead
+layout: classic-sidebar
+theme: classic-sidebar
+max_pages: 1
+include: {}
+exclude: []

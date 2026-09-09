@@ -1,0 +1,6 @@
+name: elegant-bordered
+layout: elegant-bordered
+theme: elegant-bordered
+max_pages: 2
+include: {}
+exclude: []
