@@ -31,7 +31,7 @@
 #set par(leading: 0.48em, spacing: 0.55em)
 
 #let sidebar-heading(title) = {
-  block(above: pt(sp.section_gap_pt), below: 5pt)[
+  block(above: pt(sp.section_gap_pt) + 10pt, below: 7pt)[
     #text(
       font: t.fonts.heading,
       size: pt(s.section),

@@ -22,6 +22,6 @@ spacing:
   page_margin_mm: 11
   column_gutter_mm: 6
   left_column_ratio: 0.30
-  section_gap_pt: 12
+  section_gap_pt: 16
   item_gap_pt: 5.5
   sidebar_width_mm: 64
