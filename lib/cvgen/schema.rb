@@ -32,6 +32,7 @@ module Cvgen
     def validate_profile!(profile)
       raise SchemaError, "profile must be a Hash" unless profile.is_a?(Hash)
       raise SchemaError, "profile.name is required" if blank?(profile["name"] || profile[:name])
+
       true
     end
 

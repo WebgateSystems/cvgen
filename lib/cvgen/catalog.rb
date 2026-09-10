@@ -12,11 +12,11 @@ module Cvgen
     end
 
     def profiles(root)
-      Dir[Pathname(root).join("profiles", "*.{yaml,yml}")].sort.map { |p| File.basename(p, ".*") }
+      Dir[Pathname(root).join("profiles", "*.{yaml,yml}")].map { |p| File.basename(p, ".*") }
     end
 
     def themes(root)
-      Dir[Pathname(root).join("themes", "*.{yaml,yml}")].sort.map { |p| File.basename(p, ".*") }
+      Dir[Pathname(root).join("themes", "*.{yaml,yml}")].map { |p| File.basename(p, ".*") }
     end
 
     def layouts(root)
@@ -33,7 +33,7 @@ module Cvgen
     # Best-effort page count for a PDF produced by Typst.
     def count(path)
       data = File.binread(path)
-      pages = data.scan(%r{/Type\s*/Page(?![s\w])}).size
+      pages = data.scan(%r{/Type\s*/Page(?!s)}).size
       return pages if pages.positive?
 
       if (m = data.match(%r{/Count\s+(\d+)}))

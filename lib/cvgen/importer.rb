@@ -13,25 +13,12 @@ module Cvgen
 
       content_dir = @root.join("content")
       FileUtils.mkdir_p(content_dir)
-
-      basename = sanitize_name(name.to_s.strip)
-      basename = sanitize_name(source.basename(".*").to_s) if basename.empty?
-      basename = "cv" if basename.empty?
-
+      basename = resolve_basename(source, name)
       destination = content_dir.join("#{basename}.md").expand_path
-      backup = nil
 
-      if same_file?(source, destination)
-        content = Parser.parse(destination)
-        Schema.validate_content!(content)
-        return { path: destination, name: basename, backup: nil, skipped_copy: true }
-      end
+      return validate_existing!(destination, basename) if same_file?(source, destination)
 
-      if destination.exist?
-        backup = content_dir.join("#{basename}.bak-#{Time.now.strftime('%Y%m%d-%H%M%S')}.md")
-        FileUtils.cp(destination, backup)
-      end
-
+      backup = backup_if_exists!(destination, content_dir, basename)
       FileUtils.cp(source, destination)
       content = Parser.parse(destination)
       Schema.validate_content!(content)
@@ -40,6 +27,26 @@ module Cvgen
     end
 
     private
+
+    def resolve_basename(source, name)
+      basename = sanitize_name(name.to_s.strip)
+      basename = sanitize_name(source.basename(".*").to_s) if basename.empty?
+      basename.empty? ? "cv" : basename
+    end
+
+    def validate_existing!(destination, basename)
+      content = Parser.parse(destination)
+      Schema.validate_content!(content)
+      { path: destination, name: basename, backup: nil, skipped_copy: true }
+    end
+
+    def backup_if_exists!(destination, content_dir, basename)
+      return nil unless destination.exist?
+
+      backup = content_dir.join("#{basename}.bak-#{Time.now.strftime('%Y%m%d-%H%M%S')}.md")
+      FileUtils.cp(destination, backup)
+      backup
+    end
 
     def same_file?(source, destination)
       return false unless destination.exist?
@@ -50,7 +57,7 @@ module Cvgen
     end
 
     def sanitize_name(value)
-      value.to_s.gsub(/[^\w\-]+/, "-").gsub(/\A-+|-+\z/, "")
+      value.to_s.gsub(/[^\w-]+/, "-").gsub(/\A-+|-+\z/, "")
     end
   end
 end

@@ -107,43 +107,65 @@ module Cvgen
 
       def build_with(content: nil, profile: nil, theme: nil, layout: nil, interactive: false)
         root = project_root
-        wants_prompt = interactive || (
-          !options[:yes] &&
-            content.nil? && profile.nil? && theme.nil? && layout.nil? &&
-            $stdin.tty?
-        )
-
-        content_name = content || (
-          wants_prompt ? pick("Content (MD)", Catalog.content_files(root), default_content(root)) : default_content(root)
-        )
-        profile_name = profile || (
-          wants_prompt ? pick("Profile", Catalog.profiles(root), default_profile(root)) : default_profile(root)
-        )
-        profile_obj = Profile.load(root, profile_name)
-
-        layout_name = layout || (
-          wants_prompt ? pick("Template / layout", Catalog.layouts(root), profile_obj.layout) : profile_obj.layout
-        )
-        theme_name = theme || (
-          wants_prompt ? pick("Theme", Catalog.themes(root), profile_obj.theme_name) : profile_obj.theme_name
-        )
+        wants_prompt = should_prompt?(content, profile, theme, layout, interactive)
+        choices = resolve_build_choices(root, content, profile, theme, layout, wants_prompt)
 
         result = Builder.new(
           root: root,
-          profile_name: profile_name,
-          theme_name: theme_name,
-          layout: layout_name,
-          content_name: content_name,
+          profile_name: choices[:profile],
+          theme_name: choices[:theme],
+          layout: choices[:layout],
+          content_name: choices[:content],
           fit: options[:fit],
           scale: options[:scale]
         ).build!
 
-        say "Built #{result[:pdf]}"
-        say "  content=#{result[:content]} profile=#{result[:profile]} layout=#{result[:layout]} theme=#{result[:theme]}"
-        say "  scale=#{result[:scale]} pages≈#{result[:pages]}"
-        say "  json=#{result[:json]}"
+        report_build(result)
       rescue SchemaError => e
         raise Thor::Error, e.message
+      end
+
+      def should_prompt?(content, profile, theme, layout, interactive)
+        interactive || (
+          !options[:yes] &&
+            content.nil? && profile.nil? && theme.nil? && layout.nil? &&
+            $stdin.tty?
+        )
+      end
+
+      def resolve_build_choices(root, content, profile, theme, layout, wants_prompt)
+        content_name = content || prompt_or_default(
+          wants_prompt, "Content (MD)", Catalog.content_files(root), default_content(root)
+        )
+        profile_name = profile || prompt_or_default(
+          wants_prompt, "Profile", Catalog.profiles(root), default_profile(root)
+        )
+        profile_obj = Profile.load(root, profile_name)
+        layout_name = layout || prompt_or_default(
+          wants_prompt, "Template / layout", Catalog.layouts(root), profile_obj.layout
+        )
+        theme_name = theme || prompt_or_default(
+          wants_prompt, "Theme", Catalog.themes(root), profile_obj.theme_name
+        )
+
+        {
+          content: content_name,
+          profile: profile_name,
+          layout: layout_name,
+          theme: theme_name
+        }
+      end
+
+      def prompt_or_default(wants_prompt, label, items, preferred)
+        wants_prompt ? pick(label, items, preferred) : preferred
+      end
+
+      def report_build(result)
+        say "Built #{result[:pdf]}"
+        say "  content=#{result[:content]} profile=#{result[:profile]} " \
+            "layout=#{result[:layout]} theme=#{result[:theme]}"
+        say "  scale=#{result[:scale]} pages≈#{result[:pages]}"
+        say "  json=#{result[:json]}"
       end
 
       def default_content(root)

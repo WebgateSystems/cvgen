@@ -1,8 +1,11 @@
 /.bundle/
 /vendor/bundle/
 /build/
+/tmp/
+/coverage/
 /content/
 .DS_Store
 *.swp
 /.tmp_cv_preview/
 .idea/
+/tmp/rspec-examples.txt

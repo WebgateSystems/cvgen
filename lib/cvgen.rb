@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "cvgen/version"
 require "json"
 require "yaml"
 require "fileutils"
@@ -16,6 +17,6 @@ require_relative "cvgen/builder"
 require_relative "cvgen/cli"
 
 module Cvgen
+  # Gem / repo root (layouts, themes, profiles, assets live here).
   ROOT = Pathname.new(__dir__).join("..").expand_path
-  VERSION = "0.2.0"
 end

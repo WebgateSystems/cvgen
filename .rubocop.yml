@@ -1,0 +1,86 @@
+# frozen_string_literal: true
+
+AllCops:
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  SuggestExtensions: false
+  CacheRootDirectory: tmp
+  Exclude:
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - "build/**/*"
+    - "coverage/**/*"
+    - "bin/bundle"
+    - "bin/setup"
+
+plugins:
+  - rubocop-rspec
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 35
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/MethodLength:
+  Max: 45
+
+Metrics/ClassLength:
+  Max: 220
+
+Metrics/BlockLength:
+  Max: 40
+  Exclude:
+    - "cvgen.gemspec"
+    - "spec/**/*"
+    - "Rakefile"
+    - "lib/cvgen/cli.rb"
+
+Metrics/ParameterLists:
+  Max: 8
+  MaxOptionalParameters: 6
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+# Bang validators return true/raise — not boolean predicates.
+Naming/PredicateMethod:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Style/FormatStringToken:
+  EnforcedStyle: unannotated
+
+RSpec/DescribedClass:
+  EnforcedStyle: described_class
+
+RSpec/ExampleLength:
+  Max: 30
+
+RSpec/MultipleExpectations:
+  Max: 12
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/ContextWording:
+  Enabled: true
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    CLI: cli
+    PdfPages: pdf_pages

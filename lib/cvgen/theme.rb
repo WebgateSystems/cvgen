@@ -19,17 +19,8 @@ module Cvgen
 
     def self.normalize(data)
       sizes = data["sizes_pt"].transform_values { |v| Float(v) }
-      spacing = data["spacing"].dup
-      %w[page_margin_mm column_gutter_mm left_column_ratio section_gap_pt item_gap_pt].each do |key|
-        spacing[key] = Float(spacing[key])
-      end
-      spacing["sidebar_width_mm"] = Float(spacing["sidebar_width_mm"] || 62)
-      spacing["banner_width_mm"] = Float(spacing["banner_width_mm"] || 85)
-      spacing["banner_height_mm"] = Float(spacing["banner_height_mm"] || 50)
-      colors = data["colors"].dup
-      colors["pill_bg"] ||= "#e8f1fb"
-      colors["pill_text"] ||= colors["accent"]
-      colors["sidebar_bg"] ||= "#e6e6e6"
+      spacing = normalize_spacing(data["spacing"].dup)
+      colors = normalize_colors(data["colors"].dup)
 
       data.merge(
         "sizes_pt" => sizes,
@@ -37,6 +28,23 @@ module Cvgen
         "colors" => colors,
         "scale" => Float(data["scale"] || 1.0)
       )
+    end
+
+    def self.normalize_spacing(spacing)
+      %w[page_margin_mm column_gutter_mm left_column_ratio section_gap_pt item_gap_pt].each do |key|
+        spacing[key] = Float(spacing[key])
+      end
+      spacing["sidebar_width_mm"] = Float(spacing["sidebar_width_mm"] || 62)
+      spacing["banner_width_mm"] = Float(spacing["banner_width_mm"] || 85)
+      spacing["banner_height_mm"] = Float(spacing["banner_height_mm"] || 50)
+      spacing
+    end
+
+    def self.normalize_colors(colors)
+      colors["pill_bg"] ||= "#e8f1fb"
+      colors["pill_text"] ||= colors["accent"]
+      colors["sidebar_bg"] ||= "#e6e6e6"
+      colors
     end
 
     def self.deep_stringify(obj)

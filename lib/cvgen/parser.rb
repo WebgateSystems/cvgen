@@ -140,27 +140,35 @@ module Cvgen
         if (m = line.match(/\A##\s+(.+)\z/))
           entries << current if current
           current = blank_entry.merge("organization" => m[1].strip)
-        elsif current.nil?
-          next
-        elsif (m = line.match(/\A###\s+(.+)\z/))
-          current["title"] = m[1].strip
-        elsif line.match?(%r{\Ahttps?://})
-          current["url"] = line.strip
-        elsif line.match?(/\A\d{4}\s*-\s*(?:\d{4}|ongoing)\z/i)
-          current["dates"] = line.strip
-        elsif (m = line.match(/\A-\s+(.+)\z/))
-          current["highlights"] << { "text" => m[1].strip, "tags" => [] }
-        elsif (m = line.match(/<!--\s*tags:\s*(.+?)-->/))
-          tags = m[1].split(",").map(&:strip).reject(&:empty?)
-          if current["highlights"].any?
-            current["highlights"].last["tags"] = tags
-          else
-            current["tags"] = tags
-          end
+        elsif current
+          apply_entry_line!(current, line)
         end
       end
       entries << current if current
       entries
+    end
+
+    def apply_entry_line!(current, line)
+      if (m = line.match(/\A###\s+(.+)\z/))
+        current["title"] = m[1].strip
+      elsif line.match?(%r{\Ahttps?://})
+        current["url"] = line.strip
+      elsif line.match?(/\A\d{4}\s*-\s*(?:\d{4}|ongoing)\z/i)
+        current["dates"] = line.strip
+      elsif (m = line.match(/\A-\s+(.+)\z/))
+        current["highlights"] << { "text" => m[1].strip, "tags" => [] }
+      elsif (m = line.match(/<!--\s*tags:\s*(.+?)-->/))
+        apply_entry_tags!(current, m[1])
+      end
+    end
+
+    def apply_entry_tags!(current, raw_tags)
+      tags = raw_tags.split(",").map(&:strip).reject(&:empty?)
+      if current["highlights"].any?
+        current["highlights"].last["tags"] = tags
+      else
+        current["tags"] = tags
+      end
     end
 
     def blank_entry

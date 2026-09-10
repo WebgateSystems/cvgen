@@ -2,7 +2,7 @@
 
 module Cvgen
   class Builder
-    def initialize(root: Cvgen::ROOT, profile_name:, theme_name: nil, layout: nil,
+    def initialize(profile_name:, root: Cvgen::ROOT, theme_name: nil, layout: nil,
                    content_path: nil, content_name: nil, fit: false, scale: nil)
       @root = Pathname(root)
       @profile = Profile.load(@root, profile_name)
